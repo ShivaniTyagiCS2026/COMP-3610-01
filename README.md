@@ -116,7 +116,6 @@ Please refer to TRU's policy on the use of generative AI tools such as ChatGPT o
 
 ## Contact
 **Instructor:** Shivani Tyagi  
-**Email:** Via Moodle  
 **Office:** 406B Clock Tower
 
 ---
