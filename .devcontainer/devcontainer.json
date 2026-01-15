@@ -1,0 +1,50 @@
+{
+  "name": "COMP 3610 - Database Systems",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "services": {
+    "postgres": {
+      "image": "postgres:latest",
+      "restart": "unless-stopped",
+      "environment": {
+        "POSTGRES_USER": "postgres",
+        "POSTGRES_PASSWORD": "postgres",
+        "POSTGRES_INITDB_ARGS": "-c shared_buffers=256MB"
+      },
+      "ports": ["5432:5432"],
+      "volumes": ["postgres_data:/var/lib/postgresql/data"]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/postgresql-apt:1": {
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "cweijan.vscode-postgresql-client2",
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-pg"
+      ],
+      "settings": {
+        "postgresql.user": "postgres",
+        "postgresql.password": "postgres",
+        "postgresql.host": "localhost",
+        "postgresql.port": 5432,
+        "postgresql.database": "postgres"
+      }
+    }
+  },
+  "forwardPorts": [5432],
+  "portsAttributes": {
+    "5432": {
+      "label": "PostgreSQL",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "apt-get update && apt-get install -y pgadmin4-desktop postgresql-client",
+  "remoteUser": "root"
+}
